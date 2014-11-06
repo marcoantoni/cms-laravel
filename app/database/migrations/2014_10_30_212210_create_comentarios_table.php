@@ -18,6 +18,7 @@ class CreateComentariosTable extends Migration {
 			$table->string('nome');
 			$table->string('comentario');
 			$table->integer('status');
+			$table->timestamps();
 		});
 	}
 

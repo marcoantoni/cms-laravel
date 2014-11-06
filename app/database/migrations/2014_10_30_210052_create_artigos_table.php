@@ -20,11 +20,13 @@ class CreateArtigosTable extends Migration {
 			$table->integer('status');
 			
 			// chave estrangeira tabela usuarios
-			$table->integer('id_usuario')->unsigned();
+			$table->integer('id_usuario');
 			$table->foreign('id_usuario')->references('id')->on('usuarios');
 
-			$table->integer('id_categoria')->unsigned();
+			$table->integer('id_categoria');
 			$table->foreign('id_categoria')->references('id')->on('categorias');
+
+			$table->timestamps();
 
 		});
 	}
