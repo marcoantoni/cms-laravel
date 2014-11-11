@@ -8,6 +8,8 @@ Route::get('entrar', 'HomeController@getEntrar');
 Route::post('entrar', 'HomeController@postEntrar');
 Route::get('sair', 'HomeController@getSair');
 
+
+
 Route::group(array('before' => 'auth'), function(){
     // ROTA DE CATEGORIAS
     Route::controller('categorias', 'CategoriaController');
@@ -16,5 +18,9 @@ Route::group(array('before' => 'auth'), function(){
     Route::group(array('before' => 'auth.admin'), function()
     {
         Route::controller('usuarios', 'UsuariosController');
-    });    
+    });   
+
 });
+
+// resource() mapeia as url's de funções RESTful
+Route::resource('artigos', 'ArtigosController'); 

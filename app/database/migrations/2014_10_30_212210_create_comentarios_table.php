@@ -18,7 +18,6 @@ class CreateComentariosTable extends Migration {
 			$table->string('nome');
 			$table->string('comentario');
 			$table->integer('status');
-			$table->timestamps();
 		});
 	}
 
@@ -29,7 +28,7 @@ class CreateComentariosTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('comentarios');
 	}
 
 }

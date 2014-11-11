@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 			$table->string('nome');
 			$table->string('email');
-			$table->timestamps();
+			$table->string('senha');
 		});
 	}
 
@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('usuarios');
 	}
 
 }

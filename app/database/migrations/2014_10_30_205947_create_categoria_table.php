@@ -16,7 +16,6 @@ class CreateCategoriaTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('nome');
-			$table->timestamps();
 		});
 	}
 
@@ -27,7 +26,7 @@ class CreateCategoriaTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('categorias');
 	}
 
 }
