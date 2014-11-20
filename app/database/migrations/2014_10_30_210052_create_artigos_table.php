@@ -25,6 +25,7 @@ class CreateArtigosTable extends Migration {
 
 			$table->integer('id_categoria')->unsigned();
 			$table->foreign('id_categoria')->references('id')->on('categorias');
+			$table->timestamps();
 
 		});
 	}
