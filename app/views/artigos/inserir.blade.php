@@ -10,7 +10,7 @@ Inserir | Artigo
  
 <hr>
  
-{{ Form::open(array('url' => 'artigos/store', 'class' => 'form', 'role' => 'form')) }}
+{{ Form::open(array('route' => 'artigos.store', 'class' => 'form', 'role' => 'form')) }}
 
 <div class="col-8">
     <label for="titulo" class="col-lg-2 control-label">Titulo</label>

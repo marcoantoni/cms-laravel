@@ -24,13 +24,13 @@ Artigos
                     <td>{{ $artigo->texto }}</td>
                     <td>{{ $artigo->status }}</td>
                     <td>
-                        <a href="{{ url('artigos/editar', $artigo->id) }}" class="botao botao-normal">
+                        <a href="/artigos/{{ $artigo->id }}/edit" class="botao botao-normal">
                             <span class="glyphicon glyphicon-edit"></span>Editar
                         </a>
 
-                        <a href="{{ url('artigos/destroy', $artigo->id) }}" class="botao botao-erro">
-                            <span class="glyphicon glyphicon-remove"></span>Remover
-                        </a>
+                        {{ Form::open(array('route' => ['artigos.destroy', $artigo->id], 'method'=>'delete','class' => 'Form', 'role' => 'form')) }}
+                        {{ Form::submit('Remover', array('class' => 'botao botao-sucesso ')) }}
+                        {{ Form::close() }}
                     </td>
                 </tr>
                 @endforeach

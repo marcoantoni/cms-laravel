@@ -1,13 +1,24 @@
 <?php
 
 class ArtigosController extends \BaseController {
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
 	public function index()
 	{
-		$artigos = Artigos::get();
+		$artigos = Artigo::get();
         return View::make('artigos.index', compact('artigos'));
 	}
 
 
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
 	public function create()
 	{
 		$categorias = Categoria::get();
@@ -15,57 +26,87 @@ class ArtigosController extends \BaseController {
 	}
 
 
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
 	public function store()
 	{
-		/*$rules = [
-			'titulo' => 'required',
-			'texto' => 'required'
-		];
-		//  regras de validação
-		$validation = Validator::make(Input::all(), $rules);
-
-		if ($validation->fails()) {
-			return Redirect::back()->withErrors($validation->messages());	// volta para a página anterior
-		}*/
-
-
-
-
-			return Input::get('titulo');
-			/*$artigo = new Artigos();
-			$artigo->titulo = Input::get('titulo');
-			$artigo->texto = Input::get('texto');
-			$artigo->status = 1;
-			$artigo->id_usuario = 1;
-			$artigo->id_categoria = Input::get('id_categoria');
-					
-			$artigo->save();*/	
-			//return Redirect::route('artigos.index');
-
-
+		$artigo = new Artigo();
+		$artigo->titulo = Input::get('titulo');
+		$artigo->texto = Input::get('texto');
+		$artigo->status = 1;
+		$artigo->id_usuario = 1;
+		$artigo->id_categoria = Input::get('id_categoria');
+		$artigo->save();
+		return Redirect::route('artigos.index');
 	}
 
 
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
 	public function show($id)
 	{
-		//
+		return "show";
 	}
 
 
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
 	public function edit($id)
 	{
-		//
+		
+		$artigo = Artigo::find($id);
+		$categorias = Categoria::get();
+		return View::make('artigos.editar')->with('artigo', $artigo)->with('categorias', $categorias);
+
 	}
 
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
 	public function update($id)
 	{
-		//
+		$artigo = Artigo::find($id);
+ 
+      	$artigo->titulo = Input::get('titulo');
+		$artigo->texto = Input::get('texto');
+		$artigo->status = 1;
+		$artigo->id_usuario = 1;
+		$artigo->id_categoria = Input::get('id_categoria');
+		$artigo->save();
+
+     
+ 
+        return Redirect::to('/artigos');
 	}
 
 
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
 	public function destroy($id)
 	{
-		
+		$artigo = Artigo::find($id);
+        $artigo->delete();
+ 
+        return Redirect::to('/artigos');
 	}
 
 
