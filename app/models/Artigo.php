@@ -1,8 +1,5 @@
 <?php 
-class Artigos extends Eloquent{	
-	
-	protected $table = 'artigos';
-
-}
-	
+	class Artigo extends Eloquent {		
+		protected $table = 'artigos';
+	}	
 ?>
