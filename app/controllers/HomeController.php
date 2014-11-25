@@ -4,7 +4,10 @@ class HomeController extends BaseController {
  
     public function getIndex()
     {
-        return View::make('home/entrar');
+        if(Auth::check())
+            return Redirect::to('artigos');
+        else
+            return View::make('home/entrar');     
     }
  
     public function getEntrar()
@@ -27,7 +30,7 @@ class HomeController extends BaseController {
             'password' => Input::get('senha')
             ), $remember))
         {
-            return Redirect::to('categorias');
+            return Redirect::to('artigos');
         }
         else
         {
@@ -40,6 +43,6 @@ class HomeController extends BaseController {
     public function getSair()
     {
         Auth::logout();
-        return Redirect::to('/categorias');
+        return Redirect::to('/artigos');
     }
 }

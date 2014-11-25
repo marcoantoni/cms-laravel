@@ -11,9 +11,13 @@ Artigos
         <table class="tabela tabela-borda">
             <thead>
                 <tr>
+                    <th width="5%">Id</th>
+                    <th>Título</th>
+                    <th>Texto</th>
+                    <th>Categoria</th>
+                    <th>Status</th>
                     <th width="5%">#</th>
-                    <th>Descrição</th>
-                    <th width="15%">Ações</th>
+                    <th width="5%">#</th>
                 </tr>
             </thead>
             <tbody>                
@@ -22,15 +26,16 @@ Artigos
                     <td>{{ $artigo->id }}</td>
                     <td>{{ $artigo->titulo }}</td>
                     <td>{{ $artigo->texto }}</td>
-                    <td>{{ $artigo->status }}</td>
+                    <td>{{ ($artigo->categoria == null?"Nenhuma":$artigo->categoria) }}</td>
+                    <td> {{ ($artigo->status == "1"?"Ativo":"Inativo") }} </td>
                     <td>
-                        <a href="/artigos/{{ $artigo->id }}/edit" class="botao botao-normal">
-                            <span class="glyphicon glyphicon-edit"></span>Editar
-                        </a>
+                        <a href="/artigos/{{ $artigo->id }}/edit" class="botao botao-normal">Editar</a>
+                    </td>
 
+                    <td>
                         {{ Form::open(array('route' => ['artigos.destroy', $artigo->id], 'method'=>'delete','class' => 'Form', 'role' => 'form')) }}
-                        {{ Form::submit('Remover', array('class' => 'botao botao-sucesso ')) }}
-                        {{ Form::close() }}
+                        {{ Form::submit('Remover', array('class' => 'botao botao-erro ')) }}
+                        {{ Form::close() }}                        
                     </td>
                 </tr>
                 @endforeach

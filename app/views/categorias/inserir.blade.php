@@ -13,7 +13,7 @@ Inserir | Categorias
 {{ Form::open(array('url' => 'categorias/inserir', 'class' => 'form', 'role' => 'form')) }}
 
 <div class="col-8">
-    <label for="nome" class="col-lg-2 control-label">Nome</label>
+    <label for="nome">Nome</label>
     {{ Form::text('nome', '', array('class' => 'form-caixa-texto form-caixa-texto-g', 'placeholder' => 'Nome', 'required' =>'required', 'id' => 'nome')) }}
     <br/>
     {{ Form::submit('Salvar', array('class' => 'botao botao-sucesso botao-maior')) }}

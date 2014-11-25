@@ -15,18 +15,18 @@ Editar | Usuários
 <div class="col-8">
     {{ Form::hidden('id', $usuario->id) }}
 
-    <label for="nome" class="col-lg-2 control-label">Nome</label>
+    <label for="nome" >Nome</label>
     {{ Form::text('nome', $usuario->nome, array('class' => 'form-caixa-texto form-caixa-texto-g', 'placeholder' => 'Nome', 'required' =>'required', 'id' => 'nome')) }}
 
-    <label for="email" class="col-lg-2 control-label">Email</label>
+    <label for="email">Email</label>
     {{ Form::email('email', $usuario->email, array('class' => 'form-caixa-texto form-caixa-texto-g', 'placeholder' => 'Email', 'required' =>'required', 'id' => 'email')) }}
 
 
-    <label for="senha" class="col-lg-2 control-label">Senha</label>
+    <label for="senha">Senha</label>
     {{ Form::password('senha', array('class' => 'form-caixa-texto form-caixa-texto-g', 'placeholder' => 'Senha')) }}
 
-	<label for="tipo" class="col-lg-2 control-label">Tipo</label>
-    {{ Form::select('tipo', array('admin' => 'Administrador', 'autor' => 'Autor'), $usuario->tipo, array('class' => 'form-caixa-texto form-caixa-texto-g', 'placeholder' => 'Senha')) }}
+	<label for="tipo">Tipo</label>
+    {{ Form::select('tipo', array('admin' => 'Administrador', 'autor' => 'Autor'), $usuario->tipo, array('class' => 'form-caixa-texto form-caixa-texto-g')) }}
 
     <br/>
     {{ Form::submit('Salvar', array('class' => 'botao botao-sucesso botao-maior')) }}

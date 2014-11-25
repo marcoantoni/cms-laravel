@@ -11,11 +11,12 @@ Usuários
         <table class="tabela tabela-borda">
             <thead>
                 <tr>
-                    <th width="5%">#</th>
+                    <th width="5%">Id</th>
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Tipo</th>
-                    <th width="15%">Ações</th>
+                    <th width="5%">#</th>
+                    <th width="5%">#</th>
                 </tr>
             </thead>
             <tbody>                
@@ -26,13 +27,13 @@ Usuários
                     <td>{{ $usuario->email }}</td>
                     <td>{{ ($usuario->tipo == 'admin'?'Administrador':'Autor') }}</td>
                     <td>
-                        <a href="{{ url('usuarios/editar', $usuario->id) }}" class="botao botao-normal">
-                            <span class="glyphicon glyphicon-edit"></span>Editar
+                        <a href="{{ url('usuarios/editar', $usuario->id) }}" class="botao botao-normal">Editar
                         </a>
+                    </td>
 
-                        <a href="{{ url('usuarios/remover', $usuario->id) }}" class="botao botao-erro">
-                            <span class="glyphicon glyphicon-remove"></span>Remover
-                        </a>
+                    <td>
+                        <a href="{{ url('usuarios/remover', $usuario->id) }}" class="botao botao-erro">Remover
+                        </a>                        
                     </td>
                 </tr>
                 @endforeach

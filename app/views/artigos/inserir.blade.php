@@ -13,23 +13,26 @@ Inserir | Artigo
 {{ Form::open(array('route' => 'artigos.store', 'class' => 'form', 'role' => 'form')) }}
 
 <div class="col-8">
-    <label for="titulo" class="col-lg-2 control-label">Titulo</label>
-    {{ Form::text('titulo', '', array('class' => 'form-caixa-texto form-caixa-texto-g', 'placeholder' => 'Titulo', 'required' =>'required', 'id' => 'titulo')) }}
-    <br/>
-	<textarea name="texto" id="texto" cols="30" rows="10"></textarea>
+    <label for="titulo">Titulo</label>
+    {{ Form::text('titulo', '', array('class' => 'form-caixa-texto form-caixa-texto-g', 'placeholder' => 'Título', 'required' =>'required', 'id' => 'titulo')) }}
 	
-	<label for="categoria" class="col-lg-2 control-label">Categoria</label>
+	<label for="texto" >Texto</label><br>
+	{{ Form::textarea('texto', null, ['size' => '109x5', 'placeholder' => 'Informe um texto']) }}
+
+	<br>
+	<label for="id_categoria" >Categoria</label>
+	<select name="id_categoria" id="id_categoria" class="form-caixa-texto form-caixa-texto-g">
+		<option value="">Nenhuma</option>
+		@foreach ($categorias as $categoria)            	
+			<option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+		@endforeach
+	</select>   
+
+	<label for="status" >Status</label>
+    {{ Form::select('status', array('1' => 'Ativo', '0' => 'Inativo'), '', array('class' => 'form-caixa-texto form-caixa-texto-g', 'placeholder' => 'status')) }}	
 
 	<br />
-	<br />	
-	<select id="id_categoria" name="id_categoria">
-	@foreach ($categorias as $categoria)
-		<option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
-	@endforeach
-	</select>
 
-	<br />
-	<br />
     {{ Form::submit('Salvar', array('class' => 'botao botao-sucesso botao-maior')) }}
     <a href="{{ url('artigos') }}" title="Cancelar" class="botao">Cancelar</a>
 </div>

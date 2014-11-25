@@ -9,6 +9,11 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
     protected $hidden = array('senha');
  
 
+    public function getId()
+    {
+      return $this->id;
+    }
+
     public function getAuthIdentifier()
     {
         return $this->getKey();

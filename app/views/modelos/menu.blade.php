@@ -2,10 +2,6 @@
     <div class="col-12">
         <nav>
             <ul class="menu">
-                <li class="menu-item menu-item-active">
-                    <a href="{{ url('artigos') }}">Início</a>
-                </li>
-
                 @if(Auth::check())
                     <li class="menu-item">
                         <a href="{{ url('artigos') }}">Artigos</a>

@@ -31,5 +31,4 @@ class TabelaUsuarioSeeder extends Seeder {
             ));
         }
     }
-
 }

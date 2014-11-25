@@ -9,7 +9,7 @@ class ArtigosController extends \BaseController {
 	 */
 	public function index()
 	{
-		$artigos = Artigo::get();
+		$artigos = Artigo::buscar();		
         return View::make('artigos.index', compact('artigos'));
 	}
 
@@ -36,9 +36,9 @@ class ArtigosController extends \BaseController {
 		$artigo = new Artigo();
 		$artigo->titulo = Input::get('titulo');
 		$artigo->texto = Input::get('texto');
-		$artigo->status = 1;
-		$artigo->id_usuario = 1;
-		$artigo->id_categoria = Input::get('id_categoria');
+		$artigo->status = Input::get('status');;
+		$artigo->id_usuario = Auth::id();
+		$artigo->id_categoria = (Input::get('id_categoria') == null?null:Input::get('id_categoria'));
 		$artigo->save();
 		return Redirect::route('artigos.index');
 	}
@@ -81,17 +81,13 @@ class ArtigosController extends \BaseController {
 	public function update($id)
 	{
 		$artigo = Artigo::find($id);
- 
-      	$artigo->titulo = Input::get('titulo');
+		$artigo->titulo = Input::get('titulo');
 		$artigo->texto = Input::get('texto');
-		$artigo->status = 1;
-		$artigo->id_usuario = 1;
-		$artigo->id_categoria = Input::get('id_categoria');
+		$artigo->status = Input::get('status');;
+		$artigo->id_usuario = Auth::id();
+		$artigo->id_categoria = (Input::get('id_categoria') == null?null:Input::get('id_categoria'));
 		$artigo->save();
-
-     
- 
-        return Redirect::to('/artigos');
+		return Redirect::route('artigos.index');
 	}
 
 

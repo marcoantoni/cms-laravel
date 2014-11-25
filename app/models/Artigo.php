@@ -1,5 +1,11 @@
 <?php 
 	class Artigo extends Eloquent {		
-		protected $table = 'artigos';
+		public function scopeBuscar($query)
+	    {
+	        return $query
+	        ->Leftjoin('categorias', 'artigos.id_categoria', '=' , 'categorias.id')
+	        ->select('artigos.*', 'categorias.nome as categoria')
+	        ->get();
+	    }		
 	}	
 ?>
